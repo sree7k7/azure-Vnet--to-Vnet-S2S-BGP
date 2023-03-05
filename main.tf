@@ -119,8 +119,6 @@ resource "azurerm_virtual_machine_extension" "vm_extension_install_iis" {
 SETTINGS
 }
 
-
-
 #create azure GatewaySubnet
 resource "azurerm_subnet" "vnet_gateway_subnet" {
   name                 = "GatewaySubnet"
@@ -166,6 +164,7 @@ resource "azurerm_local_network_gateway" "VPN1GW_LGW-pointing-to-VPN2GW" {
   bgp_settings        {
     asn                           = 65020
     bgp_peering_address           = var.vpngw2_bgp_peering_address
+    # bgp_peering_address           = "10.6.3.30"
   }
   depends_on               = [azurerm_public_ip.Vnet2_GatewaySubnetPublicIp]
 }
@@ -340,18 +339,6 @@ resource "azurerm_public_ip" "Vnet2_GatewaySubnetPublicIp" {
   allocation_method   = "Dynamic"
 }
 
-# # Create network interface
-# resource "azurerm_network_interface" "vpngw2_nic" {
-#   name                = "VPNGW2_NIC"
-#   location            = azurerm_resource_group.rg.location
-#   resource_group_name = azurerm_resource_group.rg.name
-
-#   ip_configuration {
-#     name                          = "vpn2_nic_configuration"
-#     subnet_id                     = azurerm_subnet.vnet2_subnet.id
-#     private_ip_address_allocation = "Dynamic"
-#   }
-# }
 #create azure virtual network gateway 
 resource "azurerm_virtual_network_gateway" "Vnet2_VirtualNetworkGateway" {
   name                = "${azurerm_virtual_network.vnet2_work.name}-VPNGW"
@@ -370,7 +357,6 @@ resource "azurerm_virtual_network_gateway" "Vnet2_VirtualNetworkGateway" {
   }
   bgp_settings {
     asn                           = 65020
-    # peering_address               = "10.6.3.30"
   }
 }
 
@@ -382,13 +368,15 @@ resource "azurerm_local_network_gateway" "lgw2-pointing-to-VPNGW1" {
   gateway_address     = azurerm_public_ip.Vnet1_GatewaySubnetPublicIp.ip_address
   bgp_settings        {
     asn                           = 65010
-    bgp_peering_address           = var.vpngw_bgp_peering_address # change this
+    bgp_peering_address           = var.vpngw_bgp_peering_address
+    # bgp_peering_address           = "10.4.3.30"
+    
   }
   depends_on               = [azurerm_public_ip.Vnet1_GatewaySubnetPublicIp]
 }
 
 resource "azurerm_virtual_network_gateway_connection" "site1_connection" {
-  name                = "lGW2-VPNGWsite1_connection"
+  name                = "lGW2-VPNGW2site1_connection"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   enable_bgp          = true

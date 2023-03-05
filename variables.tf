@@ -24,6 +24,7 @@ variable "vnet1_bastion_subnet_address" {
   default = ["10.4.4.0/24"]
 }
 variable "vpngw_bgp_peering_address" {
+  type = string
   default = "10.4.3.30"
   description = "Enter this value after creating vpn gateway, as of now keep default"
 }
@@ -45,6 +46,7 @@ variable "vnet2_bastion_subnet_address" {
   default = ["10.6.4.0/24"]
 }
 variable "vpngw2_bgp_peering_address" {
+  type = string
   default = "10.6.3.30"
   description = "Enter this value after creating vpn gateway, as of now keep default"
 }
