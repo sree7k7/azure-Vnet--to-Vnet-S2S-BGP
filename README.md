@@ -1,7 +1,7 @@
 # Vnet to Vnet S2S BGP
 
 ## Scope
-- Vnet-to-Vnet S2S BGP peering connection
+- Vnet-to-Vnet S2S BGP peering connection.
 ![diagram](Vnet-to-Vnet-BGP.png)
 
 1. Change below parameters according to your needs or keep default. 
