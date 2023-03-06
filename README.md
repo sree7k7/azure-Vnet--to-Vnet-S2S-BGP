@@ -4,7 +4,9 @@
 - Vnet-to-Vnet S2S BGP peering connection
 ![diagram](Vnet-to-Vnet-BGP.png)
 
-1. Change below parameters acc to your needs or keep default. **Note**: Change the 
+1. Change below parameters according to your needs or keep default. 
+**Note**: Change these parameters described in later steps: **vpngw_bgp_peering_address** and
+ **vpngw2_bgp_peering_address**
 ```
 variable "resource_group_location" {
   default     = "northeurope"
@@ -55,7 +57,8 @@ variable "vpngw2_bgp_peering_address" {
    - terraform plan
    - terraform apply
 
-**Note**: If fails, try to execute: *terraform init -upgrade* on terminal and execute cmd: *terraform apply --auto-approve*
+**Note**: If fails, try to execute: *terraform init -upgrade* on terminal and execute cmd: *terraform apply --auto-approve*.
+
 3. This is a tricky part somehow terrafrom doesn't allow to import the vpn gateway private ip. 
 
 - Copy both the Virtual Network Gateway **BGP peer IP address** shown in below pic:
@@ -72,3 +75,6 @@ variable "vpngw2_bgp_peering_address" {
    - Click: connect -> bastion
    ![](/pics/bastion_host.png)
 6. In browser type cross vnet VM using private ip.
+
+Links: 
+- [https://learn.microsoft.com/en-us/azure/vpn-gateway/bgp-howto](https://learn.microsoft.com/en-us/azure/vpn-gateway/bgp-howto)
