@@ -55,7 +55,7 @@ variable "vpngw2_bgp_peering_address" {
   description = "Enter this value after creating vpn gateway, as of now keep default"
 }
 ```
-2. execute below cmds: (Goto dir: /site-to-site-terrafrom)
+1. execute below cmds:
    - terraform init
    - terraform plan
    - terraform apply
