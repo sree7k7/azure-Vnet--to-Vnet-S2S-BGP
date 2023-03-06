@@ -7,7 +7,7 @@
 - [terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 - [azure cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) & [sign in](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli)
 
-1. Clone this [repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and change below parameters or keep default. 
+1. Clone this repo and change below parameters or keep default. 
 **Note**: Change these parameters described in later steps: **vpngw_bgp_peering_address** and
  **vpngw2_bgp_peering_address**
 ```
