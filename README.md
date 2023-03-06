@@ -2,7 +2,7 @@
 
 ## Scope
 - Vnet-to-Vnet S2S BGP peering connection.
-![diagram](Vnet-to-Vnet-BGP.png)
+![diagram](/pics/Vnet-to-Vnet-BGP.png)
 ## Prerequsites
 - [terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 - [azure cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) & [sign in](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli)
