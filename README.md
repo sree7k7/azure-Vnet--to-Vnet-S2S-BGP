@@ -60,7 +60,7 @@ variable "vpngw2_bgp_peering_address" {
    - terraform plan
    - terraform apply
 
-**Note**: If fails, try to execute: *terraform init -upgrade* on terminal and execute cmd: *terraform apply --auto-approve*.
+**Note**: If fails, try to execute: **terraform init -upgrade** on terminal and execute cmd: **terraform apply --auto-approve**.
 
 3. This is a tricky part somehow terrafrom doesn't allow to import the vpn gateway private ip. 
 
