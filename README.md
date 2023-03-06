@@ -71,10 +71,10 @@ variable "vpngw2_bgp_peering_address" {
 4. Execute the command in terminal: **terraform apply**
   
 5. Connect the VM's using bastion host:
-   - In global search, choose Virtual Machines.
+   - In global search, Navigate to your Virtual Machines.
    - Click: connect -> bastion
    ![](/pics/bastion_host.png)
-6. In browser type cross vnet VM using private ip.
+6. Open browser enter destination VM private ip.
 
 Links: 
 - [https://learn.microsoft.com/en-us/azure/vpn-gateway/bgp-howto](https://learn.microsoft.com/en-us/azure/vpn-gateway/bgp-howto)
