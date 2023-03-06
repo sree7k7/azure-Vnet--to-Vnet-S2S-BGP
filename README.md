@@ -79,5 +79,7 @@ variable "vpngw2_bgp_peering_address" {
    ![](/pics/bastion_host.png)
 6. Open browser enter destination VM private ip.
 
+## verify doublecheck
+
 Links: 
 - [https://learn.microsoft.com/en-us/azure/vpn-gateway/bgp-howto](https://learn.microsoft.com/en-us/azure/vpn-gateway/bgp-howto)
