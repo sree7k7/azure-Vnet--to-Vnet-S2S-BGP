@@ -75,7 +75,7 @@ variable "vpngw2_bgp_peering_address" {
   
 5. Connect the VM's using bastion host:
    - In global search, Navigate to your Virtual Machines.
-   - Click: connect -> bastion
+   - Click: connect → bastion
    ![](/pics/bastion_host.png)
 6. Open browser enter destination VM private ip.
 
