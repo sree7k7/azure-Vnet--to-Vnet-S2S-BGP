@@ -323,8 +323,6 @@ resource "azurerm_virtual_machine_extension" "vm2_extension_install_iis" {
 SETTINGS
 }
 
-
-
 #create azure GatewaySubnet
 resource "azurerm_subnet" "vnet2_gateway_subnet" {
   name                 = "GatewaySubnet"
