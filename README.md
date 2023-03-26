@@ -10,7 +10,7 @@
 1. Clone this repo and change below parameters or keep default. 
 **Note**: Change these parameters described in later steps: **vpngw_bgp_peering_address** and
  **vpngw2_bgp_peering_address**
-```t
+```terraform
 variable "resource_group_location" {
   default     = "northeurope"
   description = "Location of the resource group."
