@@ -1,7 +1,7 @@
-# Vnet to Vnet S2S BGP
+# Vnet to Vnet BGP connection
 
 ## Scope
-- Vnet-to-Vnet S2S BGP peering connection.
+- Vnet-to-Vnet BGP peering connection.
 ![diagram](/pics/Vnet-to-Vnet-BGP.png)
 ## Prerequsites
 - [terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
@@ -10,7 +10,7 @@
 1. Clone this repo and change below parameters or keep default. 
 **Note**: Change these parameters described in later steps: **vpngw_bgp_peering_address** and
  **vpngw2_bgp_peering_address**
-```
+```t
 variable "resource_group_location" {
   default     = "northeurope"
   description = "Location of the resource group."
@@ -56,11 +56,13 @@ variable "vpngw2_bgp_peering_address" {
 }
 ```
 1. execute below cmds:
-   - terraform init
-   - terraform plan
-   - terraform apply
+```terraform
+   terraform init
+   terraform plan
+   terraform apply
+```
 
-**Note**: If fails, try to execute: **terraform init -upgrade** on terminal and execute cmd: **terraform apply --auto-approve**.
+> **Note**: If fails, try to execute: **terraform init -upgrade** on terminal and execute cmd: **terraform apply**.
 
 3. This is a tricky part somehow terrafrom doesn't allow to import the vpn gateway private ip. 
 
