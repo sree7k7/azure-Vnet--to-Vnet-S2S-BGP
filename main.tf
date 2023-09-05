@@ -57,7 +57,7 @@ resource "azurerm_network_security_group" "nsg" {
 
 # Create public IPs
 resource "azurerm_public_ip" "public_ip" {
-  name                = "PublicIp"
+  name                = "Vm1_public_ip"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
@@ -163,6 +163,7 @@ resource "azurerm_local_network_gateway" "VPN1GW_LGW-pointing-to-VPN2GW" {
 
   bgp_settings        {
     asn                           = 65020
+    # bgp_peering_address           = azurerm_virtual_network_gateway.Vnet2_VirtualNetworkGateway.private_ip_address_enabled
     bgp_peering_address           = var.vpngw2_bgp_peering_address
     # bgp_peering_address           = "10.6.3.30"
   }
@@ -261,7 +262,7 @@ resource "azurerm_network_security_group" "Vnet2_nsg" {
 
 # Create public IPs
 resource "azurerm_public_ip" "vnet2_public_ip" {
-  name                = "vnet2_public_ip"
+  name                = "Vm2_public_ip"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
@@ -386,29 +387,29 @@ resource "azurerm_virtual_network_gateway_connection" "site1_connection" {
   shared_key = "abc@143"
 }
 # Azure Bastion host
-resource "azurerm_subnet" "Vnet2_AzureBastionSubnet" {
-  name                 = "AzureBastionSubnet"
-  resource_group_name = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.vnet2_work.name
-  address_prefixes     = var.vnet2_bastion_subnet_address
-}
+# resource "azurerm_subnet" "Vnet2_AzureBastionSubnet" {
+#   name                 = "AzureBastionSubnet"
+#   resource_group_name = azurerm_resource_group.rg.name
+#   virtual_network_name = azurerm_virtual_network.vnet2_work.name
+#   address_prefixes     = var.vnet2_bastion_subnet_address
+# }
 
-resource "azurerm_public_ip" "vnet2_bastion_pip" {
-  name                = "vnet2_bastion_pip"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  allocation_method   = "Static"
-  sku                 = "Standard"
-}
+# resource "azurerm_public_ip" "vnet2_bastion_pip" {
+#   name                = "vnet2_bastion_pip"
+#   location            = azurerm_resource_group.rg.location
+#   resource_group_name = azurerm_resource_group.rg.name
+#   allocation_method   = "Static"
+#   sku                 = "Standard"
+# }
 
-resource "azurerm_bastion_host" "Vnet2_BastionHost" {
-  name                = "Vnet2_BastionHost"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+# resource "azurerm_bastion_host" "Vnet2_BastionHost" {
+#   name                = "Vnet2_BastionHost"
+#   location            = azurerm_resource_group.rg.location
+#   resource_group_name = azurerm_resource_group.rg.name
 
-  ip_configuration {
-    name                 = "bastion_pip_config"
-    subnet_id            = azurerm_subnet.Vnet2_AzureBastionSubnet.id
-    public_ip_address_id = azurerm_public_ip.vnet2_bastion_pip.id
-  }
-}
+#   ip_configuration {
+#     name                 = "bastion_pip_config"
+#     subnet_id            = azurerm_subnet.Vnet2_AzureBastionSubnet.id
+#     public_ip_address_id = azurerm_public_ip.vnet2_bastion_pip.id
+#   }
+# }
